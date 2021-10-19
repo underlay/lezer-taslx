@@ -67,25 +67,26 @@ delimited<element> { (newline element?)* newline }
 
 Key { term }
 
-Constant { URI | Literal { String "$" Key } }
-
 Identifier { identifier }
 
-lambda { OpenParen Identifier CloseParen RightMap Expression }
+Value { Identifier ( Projection | Dereference )* }
 
-Expression { Constant | Derivable | Constructor | Match | Injection }
+Projection { Projector Key }
+Dereference { Pointer Key }
 
-Derivable { Identifier | Projection | Dereference }
-Projection { Derivable Projector Key }
-Dereference { Derivable Pointer Key }
+lambda { OpenParen Identifier CloseParen RightMap expression Injection* }
 
-Match { Derivable OpenBracket delimited<Case>? CloseBracket }
+expression[@isGroup=Expression] {
+  URI | Literal { String "$" Key } | Value | Constructor | Match
+}
+
+Match { Value OpenBracket delimited<Case>? CloseBracket }
 Case { Key lambda }
 
 Constructor { OpenBrace delimited<Slot> CloseBrace }
-Slot { Key LeftMap Expression }
+Slot { Key LeftMap expression Injection* }
 
-Injection { Expression Injector Key }
+Injection { Injector Key }
 
 keyword<word> { @specialize[@name={word}]<identifier, word> }
 
