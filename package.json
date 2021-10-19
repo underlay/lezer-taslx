@@ -1,0 +1,42 @@
+{
+	"name": "lezer-taslx",
+	"version": "0.0.1",
+	"description": "",
+	"type": "module",
+	"main": "index.js",
+	"types": "lib/index.d.ts",
+	"files": [
+		"index.d.ts",
+		"index.js",
+		"index.terms.js"
+	],
+	"scripts": {
+		"test": "ava",
+		"build": "lezer-generator taslx.grammar -o index.js"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/underlay/lezer-taslx.git"
+	},
+	"keywords": [
+		"underlay",
+		"lezer",
+		"taslx"
+	],
+	"author": "Joel Gustafson",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/underlay/lezer-taslx/issues"
+	},
+	"homepage": "https://github.com/underlay/lezer-taslx#readme",
+	"peerDependencies": {
+		"@lezer/common": "^0.15.7",
+		"@lezer/lr": "^0.15.4"
+	},
+	"devDependencies": {
+		"@lezer/common": "^0.15.7",
+		"@lezer/generator": "^0.15.2",
+		"@lezer/lr": "^0.15.4",
+		"ava": "^4.0.0-alpha.2"
+	}
+}
