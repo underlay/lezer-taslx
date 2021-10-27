@@ -4,7 +4,7 @@
 
 A Lezer grammar for the tasl mapping language.
 
-> ⚠️ This is a low-level library for parsing the **AST** of the mapping language - if you want to parse .taslx files into proper `tasl.Mapping` objects, you want to use the main `tasl` package instead.
+> ⚠️ This is a low-level library for parsing the **AST** of the mapping language - if you want to parse .taslx files into proper `tasl.Mapping` objects, you want to use the main [`tasl`](https://github.com/underlay/tasl) package instead.
 
 ## Table of Contents
 
