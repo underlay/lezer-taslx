@@ -1,7 +1,7 @@
 {
 	"name": "lezer-taslx",
 	"version": "0.0.1",
-	"description": "",
+	"description": "A Lezer grammar for the tasl mapping language",
 	"type": "module",
 	"main": "index.js",
 	"types": "lib/index.d.ts",
