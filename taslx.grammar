@@ -77,13 +77,13 @@ Dereference { Pointer Key }
 lambda { OpenParen Identifier CloseParen RightMap expression Injection* }
 
 expression[@isGroup=Expression] {
-  URI | Literal { String "$" Key } | Value | Constructor | Match
+  URI | Literal { String "$" Key } | Value | Construction | Match
 }
 
 Match { Value OpenBracket delimited<Case>? CloseBracket }
 Case { Key lambda }
 
-Constructor { OpenBrace delimited<Slot> CloseBrace }
+Construction { OpenBrace delimited<Slot>? CloseBrace }
 Slot { Key LeftMap expression Injection* }
 
 Injection { Injector Key }

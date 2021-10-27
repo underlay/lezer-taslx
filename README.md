@@ -1,89 +1,32 @@
 # lezer-taslx
 
-```
-# A comment
-namespace ul http://underlay.org/ns/
+[![standard-readme compliant](https://img.shields.io/badge/readme%20style-standard-brightgreen.svg)](https://github.com/RichardLitt/standard-readme) [![license](https://img.shields.io/github/license/underlay/lezer-taslx)](https://opensource.org/licenses/MIT) [![NPM version](https://img.shields.io/npm/v/lezer-taslx)](https://www.npmjs.com/package/lezer-taslx) ![TypeScript types](https://img.shields.io/npm/types/lezer-taslx)
 
-map ex:target <= ex:source (s) => <ipfs:QmUNLLsPACCz1vLxQVkXqqLX5R1X345qqfHbsf67hvA3Nn>
+A Lezer grammar for the tasl mapping language.
 
-map ex:target <= ex:source (source) => {
-  ex:a <= s * ex:foo / ex:bar
-  ex:b <= s / ex:baz [
-    ex:foo (x) => x % ex:foo
-    ex:bar (x) => "hello world"
-  ] % ex:more % ex:stuff
-} % ex:a/1 % ex:b/2
-```
+> ⚠️ This is a low-level package for parsing the **AST** of the mapping language - if you want to parse .taslx files into proper `tasl.Mapping` objects, you want to use the main `tasl` package instead.
 
-## RDF Examples
+## Table of Contents
 
-A tasl schema for RDF datasets looks like this:
+- [Install](#install)
+- [Usage](#usage)
+- [API](#api)
+- [Testing](#testing)
+- [Contributing](#contributing)
+- [License](#license)
+
+## Install
 
 ```
-# rdf-dataset.tasl
-namespace ex http://example.com/
-
-class ex:BlankNode {}
-
-class ex:Statement {
-  ex:subject -> [
-    ex:blankNode <- * ex:BlankNode
-    ex:iri <- <>
-  ]
-  ex:predicate -> <>
-  ex:object -> [
-    ex:blankNode <- * ex:BlankNode
-    ex:iri <- <>
-    ex:literal <- {
-      ex:value -> string
-      ex:languageOrDatatype -> [
-        ex:language <- string
-        ex:datatype <- <>
-      ]
-    }
-  ]
-  ex:graph -> [
-    ex:defaultGraph
-    ex:blankNode <- * ex:BlankNode
-    ex:iri <- <>
-  ]
-}
+npm i lezer-taslx
 ```
 
-We can turn this into a tasl schema for RDF _graphs_ by just removing the `ex:graph` component of statements:
+## Usage
 
-```
-# rdf-graph.tasl
-namespace ex http://example.com/
+```ts
+import { parser } from "lezer-taslx"
 
-class ex:BlankNode {}
-
-class ex:Statement {
-  ex:subject -> [
-    ex:blankNode <- * ex:BlankNode
-    ex:iri <- <>
-  ]
-  ex:predicate -> <>
-  ex:object -> [
-    ex:blankNode <- * ex:BlankNode
-    ex:iri <- <>
-    ex:literal <- {
-      ex:value -> string
-      ex:languageOrDatatype -> [
-        ex:language <- string
-        ex:datatype <- <>
-      ]
-    }
-  ]
-}
-```
-
-### Graphs to Datasets
-
-A taslx mapping from `rdf-graph.tasl` to `rdf-dataset.tasl` needs to provide the new component in statements, and provide a default value for that component.
-
-```
-# graph-to-dataset.taslx
+const tree = parser.parse(`# graph-to-dataset.taslx
 namespace ex http://example.com/ns/
 
 map ex:BlankNode <= ex:BlankNode (x) => x
@@ -94,21 +37,33 @@ map ex:Statement <= ex:Statement (x) => {
   ex:object    <= x / ex:object
   ex:graph     <= {} % ex:defaultGraph
 }
+`)
+
+// do something with tree.cursor() or tree.topNode ...
 ```
 
-### Datasets to Graphs
+You can find documentation for the LR parser interface [on the Lezer website](https://lezer.codemirror.net/docs/ref/).
 
-A taslx mapping from `rdf-dataset.tasl` to `rdf-graph.tasl` just needs to remove the graph component from statements.
+## API
+
+```ts
+import type { LRParser } from "@lezer/lr"
+
+export const parser: LRParser
+```
+
+## Testing
+
+Tests use [AVA 4](https://github.com/avajs/ava) (currently in alpha) and live in the [test](./test/) directory.
 
 ```
-# dataset-to-graph.taslx
-namespace ex http://example.com/ns/
-
-map ex:BlankNode <= ex:BlankNode (x) => x
-
-map ex:Statement <= ex:Statement (x) => {
-  ex:subject   <= x / ex:subject
-  ex:predicate <= x / ex:predicate
-  ex:object    <= x / ex:object
-}
+npm run test
 ```
+
+## Contributing
+
+This library is just intended to export the compiled lezer grammar, so I don't expect to add any features or functionality beyond that. If you find issues with the grammar definition itself please open an issue to discuss them!
+
+## License
+
+MIT © 2021 Joel Gustafson
