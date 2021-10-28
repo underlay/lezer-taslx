@@ -56,7 +56,7 @@
   NamespaceURI { absoluteURI $[/?#] }
 
   URI { "<" absoluteURI ("?" component* )? ("#" component* )? ">" }
-  String { '"' char* '"' }
+  Literal { '"' char* '"' }
 
   @precedence { term identifier URI Comment }
 }
@@ -69,15 +69,18 @@ Key { term }
 
 Identifier { identifier }
 
-Value { Identifier ( Projection | Dereference )* }
+Value { Identifier path* }
+
+path[@isGroup=Path] { Projection | Dereference }
 
 Projection { Projector Key }
+
 Dereference { Pointer Key }
 
 lambda { OpenParen Identifier CloseParen RightMap expression Injection* }
 
 expression[@isGroup=Expression] {
-  URI | Literal { String "$" Key } | Value | Construction | Match
+  URI | Literal | Value | Construction | Match
 }
 
 Match { Value OpenBracket delimited<Case>? CloseBracket }

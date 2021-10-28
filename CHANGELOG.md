@@ -6,7 +6,17 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
-## [0.1.0]
+## [0.0.2]
+
+### Added
+
+- A group `Path` for projections and dereferences
+
+### Changed
+
+- Literal expressions don't take datatype terms anymore
+
+## [0.0.1]
 
 ### Added
 
@@ -14,5 +24,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - Add a nice Standard Readme
 - Initial grammar definition
 
-[unreleased]: https://github.com/underlay/lezer-tasl/compare/v0.1.0...HEAD
-[0.1.0]: https://github.com/underlay/lezer-tasl/compare/v0.1.0
+[unreleased]: https://github.com/underlay/lezer-tasl/compare/v0.0.2...HEAD
+[0.0.2]: https://github.com/underlay/lezer-tasl/compare/v0.0.2
+[0.0.1]: https://github.com/underlay/lezer-tasl/compare/v0.0.1
