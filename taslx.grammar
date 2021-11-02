@@ -4,12 +4,12 @@
   Pointer { "*" }
   Projector { "/" }
   Injector { "%" }
-  OpenBrace { "{" }
-  CloseBrace { "}" }
-  OpenBracket { "[" }
-  CloseBracket { "]" }
-  OpenParen { "(" }
-  CloseParen { ")" }
+  OpenBrace[closedBy="CloseBrace"] { "{" }
+  CloseBrace[openedBy="OpenBrace"] { "}" }
+  OpenBracket[closedBy="CloseBracket"] { "[" }
+  CloseBracket[openedBy="OpenBracket"] { "]" }
+  OpenParen[closedBy="CloseParen"] { "(" }
+  CloseParen[openedBy="OpenParen"] { ")" }
   LeftMap { "<=" }
   RightMap { "=>" }
 
