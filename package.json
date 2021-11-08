@@ -37,6 +37,6 @@
 		"@lezer/common": "^0.15.7",
 		"@lezer/generator": "^0.15.2",
 		"@lezer/lr": "^0.15.4",
-		"ava": "^4.0.0-alpha.2"
+		"ava": "^4.0.0-rc.1"
 	}
 }
