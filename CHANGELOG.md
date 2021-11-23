@@ -6,8 +6,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
+## [0.1.0]
+
 ### Changed
 
+- Added explicit literal datatypes
 - Upgraded ava to 4.0.0-rc.1
 
 ## [0.0.3]
@@ -34,7 +37,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - Add a nice Standard Readme
 - Initial grammar definition
 
-[unreleased]: https://github.com/underlay/lezer-tasl/compare/v0.0.3...HEAD
-[0.0.2]: https://github.com/underlay/lezer-tasl/compare/v0.0.3
+[unreleased]: https://github.com/underlay/lezer-tasl/compare/v0.1.0...HEAD
+[0.1.0]: https://github.com/underlay/lezer-tasl/compare/v0.1.0
+[0.0.3]: https://github.com/underlay/lezer-tasl/compare/v0.0.3
 [0.0.2]: https://github.com/underlay/lezer-tasl/compare/v0.0.2
 [0.0.1]: https://github.com/underlay/lezer-tasl/compare/v0.0.1
