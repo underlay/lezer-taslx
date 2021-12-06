@@ -1,9 +1,6 @@
 @top Mapping { (statement? newline)* statement? }
 
 @tokens {
-  Pointer { "*" }
-  Projector { "/" }
-  Injector { "%" }
   OpenBrace[closedBy="CloseBrace"] { "{" }
   CloseBrace[openedBy="OpenBrace"] { "}" }
   OpenBracket[closedBy="CloseBracket"] { "[" }
@@ -75,9 +72,9 @@ Value { Identifier path* }
 
 path[@isGroup=Path] { Projection | Dereference }
 
-Projection { Projector Key }
+Projection { "/" Key }
 
-Dereference { Pointer Key }
+Dereference { "*" Key }
 
 lambda { OpenParen Identifier CloseParen RightMap expression Injection* }
 
@@ -91,7 +88,7 @@ Case { Key lambda }
 Construction { OpenBrace delimited<Slot>? CloseBrace }
 Slot { Key LeftMap expression Injection* }
 
-Injection { Injector Key }
+Injection { "%" Key }
 
 keyword<word> { @specialize[@name={word}]<identifier, word> }
 
