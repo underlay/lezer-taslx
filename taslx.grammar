@@ -68,17 +68,17 @@ Key { term }
 
 Identifier { identifier }
 
-Value { Identifier path* }
+Path { Identifier segment* }
 
-path[@isGroup=Path] { Projection { "/" Key } | Dereference { "*" Key } }
+segment[@isGroup=Segment] { Projection { "/" Key } | Dereference { "*" Key } }
 
 lambda { OpenParen Identifier CloseParen RightMap expression Injection* }
 
 expression[@isGroup=Expression] {
-  URI | Literal | Value | Construction | Match
+  URI | Literal | Path | Construction | Match
 }
 
-Match { Value OpenBracket delimited<Case>? CloseBracket }
+Match { Path OpenBracket delimited<Case>? CloseBracket }
 Case { Key lambda }
 
 Construction { OpenBrace delimited<Slot>? CloseBrace }
