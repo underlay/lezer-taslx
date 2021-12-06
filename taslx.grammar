@@ -1,7 +1,6 @@
 @top Mapping { (statement? newline)* statement? }
 
 @tokens {
-  Tag { "::" }
   Pointer { "*" }
   Projector { "/" }
   Injector { "%" }
@@ -58,7 +57,7 @@
   Namespace { uri $[/?#] }
 
   URI { "<" uri ("?" component* )? ("#" component* )? ">" }
-  String { '"' char* '"' }
+  Literal { '"' char* '"' }
 
   @precedence { term identifier }
   @precedence { URI Comment }
@@ -83,7 +82,7 @@ Dereference { Pointer Key }
 lambda { OpenParen Identifier CloseParen RightMap expression Injection* }
 
 expression[@isGroup=Expression] {
-  URI | Literal { String Tag Identifier } | Value | Construction | Match
+  URI | Literal | Value | Construction | Match
 }
 
 Match { Value OpenBracket delimited<Case>? CloseBracket }
@@ -98,8 +97,6 @@ keyword<word> { @specialize[@name={word}]<identifier, word> }
 
 NamespaceDefinition { keyword<"namespace"> Prefix { identifier } Namespace }
 
-LiteralDefinition { @specialize[@name=literal]<identifier, "literal"> Name { identifier } Datatype { term } }
-
 MapDeclaration { keyword<"map"> Target { term } LeftMap Source { term } lambda }
 
-statement { NamespaceDefinition | LiteralDefinition | MapDeclaration }
+statement { NamespaceDefinition | MapDeclaration }

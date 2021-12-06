@@ -10,5 +10,5 @@ map ex:target <= ex:source (source) => {
     ex:foo (x) => x % ex:foo
     ex:bar (x) => x % ex:bar
   ] % ex:more % ex:stuff
-  ex:c <= "hello world" :: string
+  ex:c <= "hello world"
 } % ex:bar % ex:baz
