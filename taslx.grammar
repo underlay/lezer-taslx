@@ -49,14 +49,15 @@
   authority { (userinfo "@")? host (":" std.digit+)? }
   pchar { unreserved | pctEncoded | subDelims | ":" | "@" }
   scheme { std.asciiLetter $[A-Za-z0-9+\-.]* }
-  absoluteURI { scheme ":" ("//" authority | "/"? pchar+) ("/" pchar*)* }
+
+  uri { scheme ":" ("//" authority | "/"? pchar+) ("/" pchar*)* }
 
   component { pchar | "/" | "?" }
-  term { identifier ":" component+ }
+  term { identifier ":" component* pchar+ }
 
-  NamespaceURI { absoluteURI $[/?#] }
+  Namespace { uri $[/?#] }
 
-  URI { "<" absoluteURI ("?" component* )? ("#" component* )? ">" }
+  URI { "<" uri ("?" component* )? ("#" component* )? ">" }
   String { '"' char* '"' }
 
   @precedence { term identifier }
@@ -95,7 +96,7 @@ Injection { Injector Key }
 
 keyword<word> { @specialize[@name={word}]<identifier, word> }
 
-NamespaceDefinition { keyword<"namespace"> Prefix { identifier } NamespaceURI }
+NamespaceDefinition { keyword<"namespace"> Prefix { identifier } Namespace }
 
 LiteralDefinition { @specialize[@name=literal]<identifier, "literal"> Name { identifier } Datatype { term } }
 
