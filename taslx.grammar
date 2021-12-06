@@ -70,11 +70,7 @@ Identifier { identifier }
 
 Value { Identifier path* }
 
-path[@isGroup=Path] { Projection | Dereference }
-
-Projection { "/" Key }
-
-Dereference { "*" Key }
+path[@isGroup=Path] { Projection { "/" Key } | Dereference { "*" Key } }
 
 lambda { OpenParen Identifier CloseParen RightMap expression Injection* }
 
