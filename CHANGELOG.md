@@ -6,9 +6,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
+## [0.3.0] 2022-01-27
+
 ### Changed
 
 - Upgrade dependencies
+- Renamed `Path` to `Term`
+- Renamed `Construction` to `Product` and `Slot` to `Component`
 
 ## [0.2.1]
 
