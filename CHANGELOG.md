@@ -14,41 +14,41 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - Renamed `Path` to `Term`
 - Renamed `Construction` to `Product` and `Slot` to `Component`
 
-## [0.2.1]
+## [0.2.1] 2021-12-06
 
 ### Changed
 
 - Renamed Path to Segment
 - Renmaed Value to Path
 
-## [0.2.0]
+## [0.2.0] 2021-12-06
 
 ### Changed
 
 - Remove explicit literal datatypes
 - Simplify token names
 
-## [0.1.1]
+## [0.1.1] 2021-12-06
 
 ### Changed
 
 - Simplified URI token logic
 - Renamed NamespaceURI to just Namespace
 
-## [0.1.0]
+## [0.1.0] 2021-11-23
 
 ### Changed
 
 - Added explicit literal datatypes
 - Upgraded ava to 4.0.0-rc.1
 
-## [0.0.3]
+## [0.0.3] 2021-11-02
 
 ### Added
 
 - added closedBy and openedBy props for brackets and braces
 
-## [0.0.2]
+## [0.0.2] 2021-10-28
 
 ### Added
 
@@ -58,7 +58,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 - Literal expressions don't take datatype terms anymore
 
-## [0.0.1]
+## [0.0.1] 2021-10-27
 
 ### Added
 
@@ -66,7 +66,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - Add a nice Standard Readme
 - Initial grammar definition
 
-[unreleased]: https://github.com/underlay/lezer-tasl/compare/v0.2.1...HEAD
+[unreleased]: https://github.com/underlay/lezer-tasl/compare/v0.3.0...HEAD
+[0.3.0]: https://github.com/underlay/lezer-tasl/compare/v0.3.0
 [0.2.1]: https://github.com/underlay/lezer-tasl/compare/v0.2.1
 [0.2.0]: https://github.com/underlay/lezer-tasl/compare/v0.2.0
 [0.1.0]: https://github.com/underlay/lezer-tasl/compare/v0.1.0
